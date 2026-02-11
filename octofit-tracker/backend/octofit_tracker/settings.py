@@ -105,6 +105,11 @@ CORS_ALLOW_METHODS = [
 ]
 CORS_ALLOW_HEADERS = ['*']
 
+# CSRF settings for codespace
+CSRF_TRUSTED_ORIGINS = []
+if os.environ.get('CODESPACE_NAME'):
+    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ.get('CODESPACE_NAME')}-8000.app.github.dev")
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
